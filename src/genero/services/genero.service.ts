@@ -3,8 +3,6 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { Genero } from "../entities/genero.entity";
 import { DeleteResult, ILike, Repository } from "typeorm";
 
-
-
 @Injectable()
 export class GeneroService{
     constructor(
@@ -30,7 +28,7 @@ export class GeneroService{
             }
         })
         if (!genero)
-            throw new HttpException('Genero não encontrada!', HttpStatus.NOT_FOUND);
+            throw new HttpException('Genero não encontrado!', HttpStatus.NOT_FOUND);
         return genero;
     }
 
@@ -54,7 +52,7 @@ export class GeneroService{
         let buscaGenero: Genero = await this.findById(genero.id)
 
         if (!buscaGenero || !genero.id)
-            throw new HttpException('Genero não foi encontrada!', HttpStatus.NOT_FOUND)    
+            throw new HttpException('Genero não foi encontrado!', HttpStatus.NOT_FOUND)    
         
         return await this.generoRepository.save(genero);
     }
@@ -63,7 +61,7 @@ export class GeneroService{
         let buscaGenero: Genero = await this.findById(id)
 
         if (!buscaGenero)
-            throw new HttpException('Genero não foi encontrada!', HttpStatus.NOT_FOUND)
+            throw new HttpException('Genero não foi encontrado!', HttpStatus.NOT_FOUND)
         
         return await this.generoRepository.delete(id);
     }

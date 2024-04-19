@@ -4,8 +4,6 @@ import { Game } from "../entities/game.entity";
 import { DeleteResult, ILike, Repository } from "typeorm";
 import { GeneroService } from "src/genero/services/genero.service";
 
-
-
 @Injectable()
 export class GameService{
     constructor(
@@ -32,7 +30,7 @@ export class GameService{
             }
         })
         if (!game)
-            throw new HttpException('Game não encontrada!', HttpStatus.NOT_FOUND);
+            throw new HttpException('Game não encontrado!', HttpStatus.NOT_FOUND);
         return game;
     }
 
@@ -49,7 +47,6 @@ export class GameService{
 
     async create(game: Game): Promise<Game>{
     
-        // Caso o genero tenha sido preenchido
         if (game.genero){
 
             let genero = await this.GeneroService.findById(game.genero.id)
@@ -67,7 +64,7 @@ export class GameService{
         let buscaGame: Game = await this.findById(game.id)
 
         if (!buscaGame || !game.id)
-            throw new HttpException('Game não foi encontrada!', HttpStatus.NOT_FOUND)    
+            throw new HttpException('Game não foi encontrado!', HttpStatus.NOT_FOUND)    
         
         if (game.genero){
 
@@ -85,7 +82,7 @@ export class GameService{
         let buscaGame: Game = await this.findById(id)
 
         if (!buscaGame)
-            throw new HttpException('Game não foi encontrada!', HttpStatus.NOT_FOUND)
+            throw new HttpException('Game não foi encontrado!', HttpStatus.NOT_FOUND)
         
         return await this.gameRepository.delete(id);
     }

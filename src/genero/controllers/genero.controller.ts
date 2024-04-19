@@ -2,7 +2,6 @@ import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPip
 import { GeneroService } from "../services/genero.service";
 import { Genero } from "../entities/genero.entity";
 
-
 @Controller("/generos")
 export class GeneroController{
 

@@ -5,7 +5,7 @@ import { Entity, PrimaryGeneratedColumn, UpdateDateColumn, Column, ManyToOne } f
 @Entity({name: "tb_postagens"})
 export class Game{
 
-    @PrimaryGeneratedColumn() //Define Chave Primária e Auto_Inclement
+    @PrimaryGeneratedColumn()
     id: number;
 
     @IsNotEmpty()

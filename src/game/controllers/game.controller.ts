@@ -2,7 +2,6 @@ import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPip
 import { GameService } from "../services/game.service";
 import { Game } from "../entities/game.entity";
 
-
 @Controller("/postagens")
 export class GameController{
 

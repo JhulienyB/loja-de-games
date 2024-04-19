@@ -13,5 +13,5 @@ export class Genero{
     tipo: string;
 
     @OneToMany(() => Game, (game) => game.genero)
-    game: Game[] //Listar todas as postagens associadas ao genero
+    game: Game[]
 };
