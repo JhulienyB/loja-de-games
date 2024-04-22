@@ -1,4 +1,4 @@
-import { IsNotEmpty } from "class-validator";
+import { IsNotEmpty, IsNumber } from "class-validator";
 import { Genero } from "src/genero/entities/genero.entity";
 import { Entity, PrimaryGeneratedColumn, UpdateDateColumn, Column, ManyToOne } from "typeorm";
 
@@ -12,8 +12,9 @@ export class Game{
     @Column({length: 100, nullable: false})
     nome: string;
 
+    @IsNumber({maxDecimalPlaces: 2})
     @IsNotEmpty()
-    @Column({type: "decimal", nullable: false})
+    @Column({type: "decimal", precision: 10, scale: 2})
     preco: number;
     
     @IsNotEmpty()
