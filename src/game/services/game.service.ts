@@ -9,7 +9,7 @@ export class GameService{
     constructor(
         @InjectRepository(Game)
         private gameRepository: Repository<Game>,
-        private GeneroService: GeneroService
+        private generoService: GeneroService
     ){}
 
     async findAll(): Promise<Game[]>{
@@ -34,6 +34,22 @@ export class GameService{
         return game;
     }
 
+    // Se na pesquisa colocar game/maior_preco/200, mostrar jogos com precos maiores que 200 
+    // async searchHigh (preco: number): Promise<Game>{
+    //     let game = await this.gameRepository.findOne({
+    //         where:{
+    //             preco
+    //         },
+    //         relations: {
+    //             genero: true
+    //         }
+    //     })
+    //     const user = await this.gameRepository
+    //     .createQueryBuilder(Game, "game")
+    //     .where("user.preco = :preco", { preco: 200 })
+    //     return game;
+    // }
+
     async findByNome(nome: string): Promise<Game[]>{
         return await this.gameRepository.find({
             where:{
@@ -49,7 +65,7 @@ export class GameService{
     
         if (game.genero){
 
-            let genero = await this.GeneroService.findById(game.genero.id)
+            let genero = await this.generoService.findById(game.genero.id)
         
             if(!genero)
                 throw new HttpException('Genero não foi encontrado!', HttpStatus.NOT_FOUND)
@@ -68,7 +84,7 @@ export class GameService{
         
         if (game.genero){
 
-            let genero = await this.GeneroService.findById(game.genero.id)
+            let genero = await this.generoService.findById(game.genero.id)
         
             if(!genero)
                 throw new HttpException('Genero não foi encontrado!', HttpStatus.NOT_FOUND)

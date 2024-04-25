@@ -5,13 +5,11 @@ import { ValidationPipe } from '@nestjs/common';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   
-  //trabakhar fuso horario Brasil
   process.env.TZ = '-03:00';
   
   app.useGlobalPipes(new ValidationPipe());
   
-  //pedir requisicao da nuvem, em lugar diferente nao no local host
-  app.enableCors(/*endereço do front, mas agora liberado globalmente*/);
+  app.enableCors();
 
   await app.listen(4000);
 }
