@@ -4,6 +4,9 @@ import { Game } from './game/entities/game.entity';
 import { GameModule } from './game/game.module';
 import { GeneroModule } from './genero/genero.module';
 import { Genero } from './genero/entities/genero.entity';
+import { AuthModule } from './auth/auth.module';
+import { UsuarioModule } from './usuario/usuario.module';
+import { Usuario } from './usuario/entities/usuario.entity';
 
 @Module({
   imports: [
@@ -14,11 +17,13 @@ import { Genero } from './genero/entities/genero.entity';
       username: 'root',
       password: 'root',
       database: 'db_lojadegames',
-      entities: [Game, Genero],
+      entities: [Game, Genero, Usuario],
       synchronize: true
     }),
     GameModule,
-    GeneroModule
+    GeneroModule,
+    UsuarioModule,
+    AuthModule
   ],
   controllers: [],
   providers: [],
